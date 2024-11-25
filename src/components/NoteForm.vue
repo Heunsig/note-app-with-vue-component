@@ -1,18 +1,19 @@
 <script setup>
+import { ref } from 'vue';
 
 const emit = defineEmits(['submit']);
 
-function addNewNote() {
-  const inputEle = document.querySelector('[data-input]');
-  const inputValue = inputEle.value;
+const inputValue = ref('');
 
-  if (inputValue === '') {
+function addNewNote() {
+
+  if (inputValue.value === '') {
     return;
   }
 
-  emit('submit', inputValue);
+  emit('submit', inputValue.value);
 
-  inputEle.value = '';
+  inputValue.value = '';
 }
 </script>
 
@@ -20,13 +21,13 @@ function addNewNote() {
   <section>
     <form 
       class="note-form"
-      @submit.prevent="addNewNote"
+      @submit.prevent="addNewNote()"
     >
       <input 
         class="form-control note-form__input" 
         type="text" 
         placeholder="Write task..."
-        data-input
+        v-model="inputValue"
       >
       <button 
         type="submit"

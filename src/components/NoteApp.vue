@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import AddingForm from './AddingForm.vue';
+import NoteForm from './NoteForm.vue';
 import NoteList from './NoteList.vue';
 
 const notes = ref([]);
@@ -10,7 +10,7 @@ const notes = ref([]);
   <div class="note-container">
     <h1 class="note-header">Note App (Vue)</h1>
 
-    <AddingForm @submit="note => {
+    <NoteForm @submit="note => {
       notes = [...notes, note];
     }"/>
 
