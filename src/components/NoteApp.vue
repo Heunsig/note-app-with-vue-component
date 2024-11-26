@@ -3,12 +3,19 @@ import { ref } from 'vue';
 import NoteForm from './NoteForm.vue';
 import NoteList from './NoteList.vue';
 
+defineProps({
+  title: {
+    type: String,
+    default: "Note App(Vue)"
+  }
+})
+
 const notes = ref([]);
 </script>
 
 <template>
   <div class="note-container">
-    <h1 class="note-header">Note App (Vue)</h1>
+    <h1 class="note-header">{{ title }}</h1>
 
     <NoteForm @submit="note => {
       notes = [...notes, note];
